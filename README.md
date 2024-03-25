@@ -19,11 +19,11 @@ proxy-based loss and hierarchical bilateral grid network to mimic the experts’
 
 We propose the first aesthetic decolorization dataset which contains three different set retouched by experts.
 
-##Dataset URL
+## Dataset URL
 
 Please download the dataset at 
 
-##Dataset Description
+## Dataset Description
 
 # Getting Started
 
@@ -82,7 +82,7 @@ python test.py --ws Expert --exp Multi_Encoder --args json
 ## Pretrained Model
 Our pretrained weights are released at: 
 
-#Contact
+# Contact
 
 If you have any question, please feel free to contact us via seunghyuns98@gm.gist.ac.kr
 
