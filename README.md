@@ -16,11 +16,14 @@ proxy-based loss and hierarchical bilateral grid network to mimic the experts’
 - NVIDIA GPU + CUDA cuDNN
 
 # Dataset
-We propose the first aesthetic decolorization dataset which contains three different set retouched by experts.
-##Dataset URL
-Please download the dataset at 
-##Dataset Description
 
+We propose the first aesthetic decolorization dataset which contains three different set retouched by experts.
+
+##Dataset URL
+
+Please download the dataset at 
+
+##Dataset Description
 
 # Getting Started
 
