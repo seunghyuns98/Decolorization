@@ -21,7 +21,7 @@ We propose the first aesthetic decolorization dataset which contains three diffe
 
 ## Dataset URL
 
-Please download the dataset at 
+Please download the dataset at https://drive.google.com/drive/folders/1pmvoaybrNvkAYeXa8bsx87t1Lr3Mfcb7?usp=drive_link
 
 ## Dataset Description
 
