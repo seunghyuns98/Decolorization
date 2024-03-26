@@ -75,7 +75,8 @@ python test.py --ws Expert --exp Multi_Encoder --args json
 ```
 
 ## Pretrained Model
-Our pretrained weights are released at: 
+Our pretrained weights are released at: https://drive.google.com/drive/folders/192xs_tPeJmer-bnTFB1xng857xVfpxLn?usp=drive_link
+Make sure all weights should be on the experience folder ex) workspace/Expert/Trial1/step1.pth.tar
 
 # Contact
 
