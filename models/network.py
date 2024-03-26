@@ -6,6 +6,10 @@ import numpy as np
 from models.basis import ResBlk, conv1x1
 
 
+def conv(in_channels, out_channels):
+    return nn.Conv2d(in_channels, out_channels, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+
+
 class VGG19(nn.Module):
     def __init__(self):
         super(VGG19, self).__init__()
