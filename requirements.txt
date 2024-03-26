@@ -1,0 +1,6 @@
+tensorboard
+opencv-python
+natsort
+scikit-learn
+scikit-image
+lpips
