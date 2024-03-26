@@ -32,11 +32,6 @@ Our DeColorful-Net consists of two steps.
 2. Decolorization 
 
 Before train your model you should change some options with your settings which are listed in the form of json file.\
-ex)\
-dataset_path : path to the dataset\
-tb_log: turn on/off to save log files\
-tb_freq: how often to save log files\
-etc.
 
 You can see json file with below command 
 ```
