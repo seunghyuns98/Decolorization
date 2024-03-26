@@ -361,7 +361,7 @@ class Encoder(nn.Module):
 
 class Bilateral_grid(nn.Module):
     def __init__(self, dims):
-        super(Bilateral_grid_res, self).__init__()
+        super(Bilateral_grid, self).__init__()
         self.layers = [2, 2, 2, 2]
         self.planes = [64, 128, 256, 512]
         self.dims = dims
