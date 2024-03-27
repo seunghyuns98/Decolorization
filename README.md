@@ -25,6 +25,9 @@ Please download the dataset at [https://drive.google.com/drive/folders/1pmvoaybr
 
 Then, you should change "dataset_path" in json file where you save the dataset. 
 
+If you want to train DeColorful-Net Phase1, then download a subset of our dataset for train phase1 from https://drive.google.com/drive/folders/114AW6yDtFj8-6PSu8RwbLi03WImXYxu5?usp=drive_link
+in the same folder where you save the BW Adobe5k.
+
 # Getting Started
 
 Our DeColorful-Net consists of two steps.
