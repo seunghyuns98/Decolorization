@@ -1,22 +1,16 @@
 import os
 import sys
-import datetime
 
 import torch
 from torch.optim import Adam
 from torch.optim import lr_scheduler
 import dataloader
 import torch.nn.functional as F
-import torchvision
-from torch.autograd import Variable
 from utils.args_parser import args_parser, print_args
-from loss.losses import get_loss_fn
 from tqdm import tqdm
 import torch.nn as nn
 import numpy as np
 from models import network
-from PIL import Image
-import pdb
 from skimage.metrics import peak_signal_noise_ratio as compare_psnr
 from skimage.metrics import structural_similarity as compare_ssim
 
@@ -37,7 +31,6 @@ def main():
     sys.path.append(exp_dir)
     num_cls = args.num_cls
     num_obj = args.num_obj
-    mode = args.mode
     vector_dim = args.vector_dim
 
     Gridnet = network.RGB2GRAY(vector_dim).to(device)
