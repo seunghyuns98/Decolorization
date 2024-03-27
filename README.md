@@ -68,7 +68,6 @@ python train_step2.py --ws Expert --exp Multi_Encoder --args json
 ## Inference
 
 Make sure to change directory of pretrained model from training phase 1 & 2.\
-Also you should change style index corresponding to your preferred style in json file.
 
 ```commandline
 python test.py --ws Expert --exp Multi_Encoder --args json
