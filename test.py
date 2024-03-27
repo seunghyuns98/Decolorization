@@ -1,22 +1,13 @@
 import os
 import sys
-import datetime
-
 import torch
-from torch.optim import Adam
-from torch.optim import lr_scheduler
 import dataloader
 import torch.nn.functional as F
-import torchvision
-from torch.autograd import Variable
 from utils.args_parser import args_parser, print_args
-from loss.losses import get_loss_fn
 from tqdm import tqdm
 import torch.nn as nn
 import numpy as np
 from models import network
-from PIL import Image
-import pdb
 from skimage.metrics import peak_signal_noise_ratio as compare_psnr
 from skimage.metrics import structural_similarity as compare_ssim
 
@@ -35,7 +26,6 @@ def main():
     sys.path.append(exp_dir)
     num_cls = args.num_cls
     num_obj = args.num_obj
-    mode = args.mode
     vector_dim = args.vector_dim
 
     Gridnet = network.RGB2GRAY(vector_dim).to(device)
@@ -48,15 +38,15 @@ def main():
     Encoder.load_state_dict(checkpoint['state_dict'])
     proxies = checkpoint['state_dict_loss']['proxies']
     proxies = torch.nn.functional.normalize(proxies, p=2, dim=1)
-    dataset_names = dataloader.get_dataset(args.dataset_step2)
+    dataset_names = dataloader.get_dataset(args.dataset_test)
 
     test_set = dataset_names(root_dir=args.dataset_path, split='test')
 
     test_loader = torch.utils.data.DataLoader(
-        test_set, batch_size=args.step2_test_batch_size,
+        test_set, batch_size=1,
         num_workers=args.workers, shuffle=True, drop_last=True)
 
-    checkpoint = torch.load(os.path.join(exp_dir, 'step2_best.pth.tar'))
+    checkpoint = torch.load(os.path.join(exp_dir, 'step2_best_l1_cls.pth.tar'))
     Gridnet.load_state_dict(checkpoint['state_dict'])
 
     test(test_loader, Gridnet, Encoder, proxies)
@@ -77,6 +67,7 @@ class AverageMeter(object):
         self.sum += val * n
         self.count += n
         self.avg = self.sum / self.count
+
 
 def test(test_loader, Gridnet, Encoder, proxy):
     top1_psnr_o = AverageMeter()
@@ -156,21 +147,6 @@ def psnr_ssim(gt_img, predict_img, style_idx, eval_border):
         ssim = 0
 
     return psnr, ssim, psnr_o, ssim_o
-
-
-def accuracy(output, target, topk=(1,)):
-    maxk = max(topk)
-    batch_size = target.size(0)
-
-    _, pred = output.topk(maxk, 1, True, True)
-    pred = pred.t()
-    correct = pred.eq(target.view(1, -1).expand_as(pred))
-
-    res = []
-    for k in topk:
-        correct_k = correct[:k].view(-1).float().sum(0, keepdim=True)
-        res.append(correct_k.mul_(100.0 / batch_size))
-    return res
 
 
 if __name__ == '__main__':
