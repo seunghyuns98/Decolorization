@@ -46,7 +46,7 @@ def main():
         test_set, batch_size=1,
         num_workers=args.workers, shuffle=True, drop_last=True)
 
-    checkpoint = torch.load(os.path.join(exp_dir, 'step2_best_l1_cls.pth.tar'))
+    checkpoint = torch.load(os.path.join(exp_dir, 'step2_best.pth.tar'))
     Gridnet.load_state_dict(checkpoint['state_dict'])
 
     test(test_loader, Gridnet, Encoder, proxies)
