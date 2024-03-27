@@ -67,7 +67,7 @@ python train_step2.py --ws Expert --exp Multi_Encoder --args json
 
 ## Inference
 
-Make sure to change directory of pretrained model from training phase 1 & 2.\
+Make sure to change directory of pretrained model from training phase 1 & 2.
 
 ```commandline
 python test.py --ws Expert --exp Multi_Encoder --args json
