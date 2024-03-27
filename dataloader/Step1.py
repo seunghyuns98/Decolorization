@@ -9,21 +9,22 @@ import cv2
 import random
 from itertools import chain
 
+
 class Step1(Dataset):
     def __init__(self, root_dir):
-        self.root_dir = root_dir
         self.classes = ['Expert_A', 'Expert_C', 'Input', 'Expert_B']
         self.objects = ['nonhuman', 'human', 'building', 'nature']
 
-        building = [_ for _ in os.listdir('./dataset/Step1/Input/building') if
+        building = [_ for _ in os.listdir(os.path.join(root_dir, 'step1', 'Input', 'building')) if
                     _.endswith('.jpg') or _.endswith('.JPG')]
-        nonhuman = [_ for _ in os.listdir('./dataset/Step1/Input/nonhuman') if
+        nonhuman = [_ for _ in os.listdir(os.path.join(root_dir, 'step1', 'Input', 'nonhuman')) if
                     _.endswith('.jpg') or _.endswith('.JPG')]
-        human = [_ for _ in os.listdir('./dataset/Step1/Input/human') if
+        human = [_ for _ in os.listdir(os.path.join(root_dir, 'step1', 'Input', 'human')) if
                  _.endswith('.jpg') or _.endswith('.JPG')]
-        nature = [_ for _ in os.listdir('./dataset/Step1/Input/nature') if
+        nature = [_ for _ in os.listdir(os.path.join(root_dir, 'step1', 'Input', 'nature')) if
                   _.endswith('.jpg') or _.endswith('.JPG')]
         self.image_names = [nonhuman, human, building, nature]
+        self.root_dir = root_dir + '/step1'
 
         self.transform = transforms.Compose([
             transforms.Resize((224, 224)),
