@@ -34,7 +34,7 @@ def main():
 
     # Dataloader
     dataset_names = dataloader.get_dataset(args.dataset_step1)
-    train_set = dataset_names(root_dir=args.dataset_path_step1)
+    train_set = dataset_names(root_dir=args.dataset_path)
     train_loader = torch.utils.data.DataLoader(
         train_set, batch_size=args.step1_train_batch_size,
         num_workers=args.workers, shuffle=True, drop_last=True)
@@ -87,10 +87,6 @@ class AverageMeter(object):
 ############ TRAINING FUNCTION ############
 def train(train_loader, model, optimizer, epoch, objectives, w_1, w_2):
     losses = AverageMeter()
-    ce_losses_o = AverageMeter()
-    ce_losses_s = AverageMeter()
-    proxy_losses = AverageMeter()
-    hproxy_losses = AverageMeter()
     model.train()
     objectives.train()
     for (source_img, style_id, object_id, s_o_id) in tqdm(train_loader):
@@ -100,17 +96,14 @@ def train(train_loader, model, optimizer, epoch, objectives, w_1, w_2):
         object_id = object_id.to(device)
         s_o_id = s_o_id.to(device)
         embeddings, style_Ind, object_Ind = model(source_img)
-        loss, p_loss, hp_loss, c_loss_o, c_loss_s = objectives(embeddings, style_Ind, object_Ind, style_id, object_id, s_o_id, w_1, w_2)
+        loss, _, _, _, _ = objectives(embeddings, style_Ind, object_Ind, style_id, object_id, s_o_id, w_1, w_2)
         losses.update(loss.item(), args.step1_train_batch_size)
-        ce_losses_o.update(c_loss_o.item(), args.step1_train_batch_size)
-        ce_losses_s.update(c_loss_s.item(), args.step1_train_batch_size)
-        proxy_losses.update(p_loss.item(), args.step1_train_batch_size)
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
 
     print('Train [{0}] \t Loss: {loss:.2f}'.format(epoch, loss=losses.avg))
-    return losses.avg, ce_losses_o.avg, ce_losses_s.avg, proxy_losses.avg, hproxy_losses.avg
+    return losses.avg
 
 
 if __name__ == '__main__':
