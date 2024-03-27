@@ -14,7 +14,6 @@ class Step2(Dataset):
         self.root_dir = root_dir
         self.classes = ['Expert_A', 'Expert_C', 'Input', 'Expert_B']
         self.objects = ['nonhuman', 'human', 'building', 'nature']
-        self.mode = mode
         self.resize = transforms.Resize((512, 512))
         self.transform = transforms.Compose([
             transforms.ToTensor(),
@@ -23,26 +22,28 @@ class Step2(Dataset):
 
         if split == 'train':
 
-            building = [_ for _ in os.listdir('./dataset/BW_Adobe5k/train/Input/building') if
+            building = [_ for _ in os.listdir(os.path.join(root_dir, 'train', 'Input', 'building')) if
                         _.endswith('.jpg') or _.endswith('.JPG')]
-            nonhuman = [_ for _ in os.listdir('./dataset/BW_Adobe5k/train/Input/nonhuman') if
+            nonhuman = [_ for _ in os.listdir(os.path.join(root_dir, 'train', 'Input', 'nonhuman')) if
                         _.endswith('.jpg') or _.endswith('.JPG')]
-            human = [_ for _ in os.listdir('./dataset/BW_Adobe5k/train/Input/human') if
+            human = [_ for _ in os.listdir(os.path.join(root_dir, 'train', 'Input', 'human')) if
                      _.endswith('.jpg') or _.endswith('.JPG')]
-            nature = [_ for _ in os.listdir('./datasetBW_Adobe5k/train/Input/nature') if
+            nature = [_ for _ in os.listdir(os.path.join(root_dir, 'train', 'Input', 'nature')) if
                       _.endswith('.jpg') or _.endswith('.JPG')]
             self.image_names = [nonhuman, human, building, nature]
+            self.root_dir = root_dir + '/train'
 
         else:
 
-            building = [_ for _ in os.listdir('./dataset/BW_Adobe5k/test/Input/building') if
+            building = [_ for _ in os.listdir(os.path.join(root_dir, 'test', 'Input', 'building')) if
                         _.endswith('.jpg') or _.endswith('.JPG')]
-            nonhuman = [_ for _ in os.listdir('./dataset/BW_Adobe5k/test/Input/nonhuman') if
+            nonhuman = [_ for _ in os.listdir(os.path.join(root_dir, 'test', 'Input', 'nonhuman')) if
                         _.endswith('.jpg') or _.endswith('.JPG')]
-            human = [_ for _ in os.listdir('./dataset/BW_Adobe5k/test/Input/human') if
+            human = [_ for _ in os.listdir(os.path.join(root_dir, 'test', 'Input', 'human')) if
                      _.endswith('.jpg') or _.endswith('.JPG')]
-            nature = [_ for _ in os.listdir('./dataset/BW_Adobe5k/test/Input/nature') if
+            nature = [_ for _ in os.listdir(os.path.join(root_dir, 'test', 'Input', 'nature')) if
                       _.endswith('.jpg') or _.endswith('.JPG')]
+            self.root_dir = root_dir + '/test'
 
         self.image_names = [nonhuman, human, building, nature]
 
