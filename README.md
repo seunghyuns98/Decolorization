@@ -21,7 +21,7 @@ We propose the first aesthetic decolorization dataset which contains three diffe
 
 ## Dataset URL
 
-Please download the dataset at [https://drive.google.com/drive/folders/1pmvoaybrNvkAYeXa8bsx87t1Lr3Mfcb7?usp=drive_link](https://drive.google.com/drive/folders/1OQo5_NeiFza_un0R7FuP67-Bn6MHObVX?usp=drive_link)
+Please download the dataset at [https://drive.google.com/drive/folders/1pmvoaybrNvkAYeXa8bsx87t1Lr3Mfcb7?usp=drive_link](https://drive.google.com/drive/folders/1OQo5_NeiFza_un0R7FuP67-Bn6MHObVX?usp=drive_link)\\
 Then, you should change "dataset_path" in json file where you save the dataset. 
 
 # Getting Started
