@@ -35,7 +35,7 @@ Before train your model you should change some options with your settings which 
 
 You can see json file with below command 
 ```
-cd ./workspace/Expert/Multi_Encoder
+cd ./workspace/Expert/Trial1
 ```
 ## Installation
 
