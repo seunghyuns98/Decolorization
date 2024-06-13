@@ -3,7 +3,7 @@
 **Close Imitation of Expert Retouching for Black-and-White Photography (CVPR 2024 ACCEPTED !!)**<br>
 Seunghyun Shin, Jisu Shin, Jihwan Bae, Inwook Shim and Hae-Gon Jeon
 
-**[[PAPER]](https://doi.org/10.1609/aaai.v37i2.25322)**
+**[[PAPER]]([https://doi.org/10.1609/aaai.v37i2.25322](https://openaccess.thecvf.com/content/CVPR2024/papers/Shin_Close_Imitation_of_Expert_Retouching_for_Black-and-White_Photography_CVPR_2024_paper.pdf))**
 
 # Introduction
 
